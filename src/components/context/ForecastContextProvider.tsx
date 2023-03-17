@@ -8,8 +8,8 @@ export const ForecastContext = createContext(
 type ForecastCOntextProviderPropsType = { children: React.ReactNode };
 type ForecastCOntextProviderValuesType = {
   locationsApi: locationsApiType[];
-  isOptionsShow: boolean;
-  setIsOptionsShow: React.Dispatch<React.SetStateAction<boolean>>;
+  showOptions: boolean;
+  setShowOptions: React.Dispatch<React.SetStateAction<boolean>>;
   fetchOptions: (e: React.ChangeEvent<HTMLInputElement>) => void;
   fetchForecast: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -22,7 +22,7 @@ type ForecastCOntextProviderValuesType = {
 const ForecastCOntextProvider = ({
   children,
 }: ForecastCOntextProviderPropsType): JSX.Element => {
-  const [isOptionsShow, setIsOptionsShow] = useState<boolean>(false);
+  const [showOptions, setShowOptions] = useState<boolean>(false);
   const [locationsApi, setLocationsApi] = useState<locationsApiType[]>([]);
   const [isForecast, setIsForecast] = useState<boolean>(false);
   const [forecast, setForecast] = useState<weatherApiType>(
@@ -33,9 +33,9 @@ const ForecastCOntextProvider = ({
     const currInput = e.target.value.trim();
     console.log("currInput: ", currInput);
     if (currInput.length === 0) {
-      setIsOptionsShow(false);
+      setShowOptions(false);
     } else if (currInput.length > 0) {
-      setIsOptionsShow(true);
+      setShowOptions(true);
       fetchLocationsApi(currInput);
     }
   };
@@ -56,8 +56,8 @@ const ForecastCOntextProvider = ({
   ) => {
     e.preventDefault();
     setIsForecast(true);
-    setIsOptionsShow(false);
-    console.log("isOptionsShow: ", isOptionsShow);
+    setShowOptions(false);
+    console.log("showOptions: ", showOptions);
     const units: unitsType = "metric";
     const lat = locationsApiItem.lat;
     const lon = locationsApiItem.lon;
@@ -72,8 +72,8 @@ const ForecastCOntextProvider = ({
     <ForecastContext.Provider
       value={{
         locationsApi,
-        isOptionsShow,
-        setIsOptionsShow,
+        showOptions,
+        setShowOptions,
         fetchOptions,
         fetchForecast,
         forecast,

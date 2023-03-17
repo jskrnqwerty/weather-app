@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { ForecastContext } from "./context/ForecastContextProvider";
 
 const LocationInput = (): JSX.Element => {
-  const { locationsApi, fetchOptions, isOptionsShow } =
+  const { locationsApi, fetchOptions, showOptions } =
     useContext(ForecastContext);
 
   return (
@@ -19,9 +19,9 @@ const LocationInput = (): JSX.Element => {
         ></input>
       </div>
       <div className="list-options">
-        {isOptionsShow && <LocationOptions locationsApi={locationsApi} />}
+        {showOptions && <LocationOptions locationsApi={locationsApi} />}
       </div>
-      {console.log("isOptionsShow:", isOptionsShow)}
+      {console.log("isOptionsShow:", showOptions)}
     </>
   );
 };
