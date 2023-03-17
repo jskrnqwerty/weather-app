@@ -1,18 +1,22 @@
+import { useContext } from "react";
+import ForecastCOntextProvider, {
+  ForecastContext,
+} from "./components/context/ForecastContextProvider";
 import "./components/css/style.css";
-// import WeatherApiContextProvider from "./components/context/WeatherApiContextProvider";
 import Home from "./components/Home";
-// import GeoApiContextProvider from "./components/context/LocationsApiContextProvider";
 
-function App() {
+const App = () => {
+  const { forecast } = useContext(ForecastContext);
+  console.log("we are in APP");
+  console.log(forecast);
+
   return (
-    // <GeoApiContextProvider>
-    //   <WeatherApiContextProvider>
-    <div className="App">
-      <Home />
-    </div>
-    //   </WeatherApiContextProvider>
-    // </GeoApiContextProvider>
+    <ForecastCOntextProvider>
+      <div className="App">
+        <Home />
+      </div>
+    </ForecastCOntextProvider>
   );
-}
+};
 
 export default App;

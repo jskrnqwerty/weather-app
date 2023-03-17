@@ -51,6 +51,10 @@ h1 {
   }
 }
 
+.input-container {
+  position: relative;
+}
+
 .input-container input {
   padding: 0.35rem;
   padding-left: 0.8rem;
@@ -60,10 +64,16 @@ h1 {
   max-width: 100%;
 }
 
+.list-options {
+  position: absolute;
+  width: 100%;
+}
+
 .list-options .ul {
   margin: 0;
   list-style: none;
   padding:0
+  
 }
 
 .dropdown-btn {
@@ -71,9 +81,10 @@ h1 {
   font-size: 1rem;
   padding: 0.2rem 0.8rem;
   min-width: 100%;
+  /* border: unset; */
 }
 
-.dropdown-btn:hover:hover {
+.dropdown-btn:hover {
   background-color: grey;
   color: white
 }
