@@ -1,26 +1,26 @@
 import { useContext } from "react";
-import { ForecastContext } from "./context/ForecastContextProvider";
-import { locationsApiType } from "./types/types";
+import { DataContext } from "./context/DataContextProvider";
+import { locationsDataType } from "./types/types";
 
 type LocationOptionsPropsType = {
-  locationsApi: locationsApiType[];
+  locationsData: locationsDataType[];
 };
 
 const LocationOptions = ({
-  locationsApi,
+  locationsData,
 }: LocationOptionsPropsType): JSX.Element => {
-  const { fetchForecast } = useContext(ForecastContext);
+  const { fetchWeather } = useContext(DataContext);
 
   return (
     <ul className="ul">
-      {locationsApi.map((locationsApiItem, index) => (
+      {locationsData.map((locationsDataItem, index) => (
         <li key={index}>
           <button
             className="dropdown-btn"
-            onClick={(e) => fetchForecast(e, locationsApiItem)}
+            onClick={(e) => fetchWeather(e, locationsDataItem)}
           >
-            {locationsApiItem.name}, {locationsApiItem.state},{" "}
-            {locationsApiItem.country}
+            {locationsDataItem.name}, {locationsDataItem.state},{" "}
+            {locationsDataItem.country}
           </button>
         </li>
       ))}

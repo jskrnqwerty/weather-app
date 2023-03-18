@@ -1,17 +1,82 @@
+// https://api.openweathermap.org/data/2.5/weather?lat=51.5085&lon=-0.1257&appid=8d3b81e8ecfdf1ec8d175500301831aa
+// https://api.openweathermap.org/data/2.5/forecast?lat=51.5085&lon=-0.1257&appid=8d3b81e8ecfdf1ec8d175500301831aa
+// http://api.openweathermap.org/geo/1.0/direct?q=toronto&limit=5&appid=8d3b81e8ecfdf1ec8d175500301831aa
+// https://openweathermap.org/api/geocoding-api
+// https://openweathermap.org/current
+
 export type unitsType = "standard" | "metric" | "imperial";
 
-export type locationsApiType = otherInfoType & coordType;
+export type locationsDataType = locationType & coordType;
 
-type otherInfoType = {
+export type locationType = {
   name: string;
   local_names?: localNamesType;
   country: string;
   state?: string;
 };
 
+export type forecastDataType = {
+  cod: string;
+  message: number;
+  cnt: number;
+  list: weatherDataType[];
+  city: cityType;
+};
+
+type cityType = locationsDataType & {
+  id: number;
+  population: number;
+  timezone: number;
+  sunrise: number;
+  sunset: number;
+};
+
 type coordType = {
   lat: number;
   lon: number;
+};
+
+export type weatherDataType = {
+  coord: coordType;
+  weather: [
+    {
+      id: number;
+      main: string;
+      description: string;
+      icon: string;
+    }
+  ];
+  base: string;
+  main: {
+    temp: number;
+    feels_like: number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
+    humidity: number;
+    sea_level?: number;
+    grnd_level?: number;
+    temp_kf?: number;
+  };
+  visibility: number;
+  wind: { speed: number; deg: number; gust: number };
+  clouds: { all: number };
+  dt: number;
+  sys: {
+    type: number;
+    id: number;
+    country: string;
+    sunrise: number;
+    sunset: number;
+    pod?: string;
+  };
+  timezone: number;
+  id: number;
+  name: string;
+  cod: number;
+  pop?: number;
+  rain?: { "1hr"?: number; "3h"?: number };
+  dt_txt?: Date;
 };
 
 type localNamesType = {
@@ -48,36 +113,38 @@ type localNamesType = {
   ar?: string;
 };
 
-export type weatherApiType = {
-  coord: coordType;
-  weather: [{ id: number; main: string; description: string; icon: string }];
-  base: string;
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    humidity: number;
-  };
-  visibility: number;
-  wind: { speed: number; deg: number; gust: number };
-  clouds: { all: number };
-  dt: number;
-  sys: {
-    type: number;
-    id: number;
-    country: string;
-    sunrise: number;
-    sunset: number;
-  };
-  timezone: number;
-  id: number;
-  name: string;
-  cod: number;
-};
+// {
+//   // dt: number;
+//   // main: {
+//   //   temp: number;
+//   //   feels_like: number;
+//   //   temp_min: number;
+//   //   temp_max: number;
+//   //   pressure: number;
+//   //   humidity: number;
+//   //   sea_level: number;
+//   //   grnd_level: number;
+//   //   temp_kf: number;
+//   };
+//   // weather: [
+//   //   {
+//   //     id: number;
+//   //     main: string;
+//   //     description: string;
+//   //     icon: string;
+//   //   }
+//   // ];
+//   // clouds: { all: number };
+//   // wind: { speed: number; deg: number; gust: number };
+//   // visibility: number;
+//   // sys: { pod: string };
+// pop: number;
+// rain: { "3h": 0.58 };
+// dt_txt: Date;
 
-// // https://open-meteo.com/en/docs/locationscoding-api
+// },
+
+// // https://open-meteo.com/en/docs/locationscoding-data
 
 // export type weatherData = {
 //   id: number;
@@ -100,7 +167,7 @@ export type weatherApiType = {
 //   admin3?: string;
 // };
 
-// export type LocationsApiData = {
+// export type LocationsDataData = {
 //   results: weatherData[];
 //   generationtime_ms: 0.674963;
 // };

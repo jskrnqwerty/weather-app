@@ -1,18 +1,17 @@
-import { useContext } from "react";
-import { ForecastContext } from "./components/context/ForecastContextProvider";
 import "./components/css/style.css";
+import { useContext } from "react";
+import { DataContext } from "./components/context/DataContextProvider";
+import DisplayForecast from "./components/DisplayData";
 import Home from "./components/Home";
 
 const App = () => {
-  const { isForecast, forecast } = useContext(ForecastContext);
+  const { isWeather, weather } = useContext(DataContext);
   console.log("we are in APP");
-  console.log("forecast:", forecast);
-  console.log("isForecast:", isForecast);
+  console.log("weather:", weather);
+  console.log("isWeather:", isWeather);
 
   return (
-    <div className="App">
-      {isForecast ? "Forecast gets displayed here" : <Home />}
-    </div>
+    <div className="App">{isWeather ? <DisplayForecast /> : <Home />}</div>
   );
 };
 

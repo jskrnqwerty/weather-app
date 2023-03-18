@@ -1,10 +1,9 @@
-import LocationOptions from "./LocationOptions";
 import { useContext } from "react";
-import { ForecastContext } from "./context/ForecastContextProvider";
+import { DataContext } from "./context/DataContextProvider";
+import LocationOptions from "./LocationOptions";
 
 const LocationInput = (): JSX.Element => {
-  const { locationsApi, fetchOptions, showOptions } =
-    useContext(ForecastContext);
+  const { locationsData, fetchOptions, showOptions } = useContext(DataContext);
 
   return (
     <>
@@ -19,9 +18,8 @@ const LocationInput = (): JSX.Element => {
         ></input>
       </div>
       <div className="list-options">
-        {showOptions && <LocationOptions locationsApi={locationsApi} />}
+        {showOptions && <LocationOptions locationsData={locationsData} />}
       </div>
-      {console.log("isOptionsShow:", showOptions)}
     </>
   );
 };
