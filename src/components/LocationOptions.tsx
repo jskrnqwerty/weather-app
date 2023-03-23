@@ -9,7 +9,7 @@ type LocationOptionsPropsType = {
 const LocationOptions = ({
   locationsData,
 }: LocationOptionsPropsType): JSX.Element => {
-  const { fetchWeather } = useContext(DataContext);
+  const { fetchData } = useContext(DataContext);
 
   return (
     <ul className="ul">
@@ -17,7 +17,7 @@ const LocationOptions = ({
         <li key={index}>
           <button
             className="dropdown-btn"
-            onClick={(e) => fetchWeather(e, locationsDataItem)}
+            onClick={() => fetchData(locationsDataItem, "weather", "metric")}
           >
             {locationsDataItem.name}, {locationsDataItem.state},{" "}
             {locationsDataItem.country}

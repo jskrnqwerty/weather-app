@@ -1,3 +1,4 @@
+import "./css/style.css";
 import { useContext } from "react";
 import { DataContext } from "./context/DataContextProvider";
 
@@ -14,7 +15,6 @@ const DisplayData = () => {
   const tempMin: number = weather.main.temp_min;
   const tempMax: number = weather.main.temp_max;
   const humidity: number = weather.main.humidity;
-  // console.log("weather.weather: ", weather.weather);
   const weatherDescription: string = weather?.weather[0].description;
   const weatherType: string = weather?.weather[0].main;
   const windSpeed: number = weather.wind.speed;
@@ -36,9 +36,9 @@ const DisplayData = () => {
   //   gust
 
   return (
-    <>
+    <div className="display-container">
       <div>
-        Weather for {city}, {country}
+        {city}, {country}
       </div>
 
       <div>
@@ -63,8 +63,7 @@ const DisplayData = () => {
         <div>Wind Speed: {windSpeed} kmph</div>
         <div>Wind Gust: {windGust} kmph</div>
       </div>
-    </>
+    </div>
   );
 };
-
 export default DisplayData;

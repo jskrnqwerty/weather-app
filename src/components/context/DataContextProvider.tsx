@@ -2,8 +2,10 @@ import { createContext, useState } from "react";
 import {
   locationsDataType,
   weatherDataType,
+  forecast5DataType,
   unitsType,
   locationType,
+  weatherOrForecastType,
 } from "../types/types";
 
 export const DataContext = createContext({} as DataContextProviderValuesType);
@@ -14,12 +16,15 @@ type DataContextProviderValuesType = {
   showOptions: boolean;
   setShowOptions: React.Dispatch<React.SetStateAction<boolean>>;
   fetchOptions: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  fetchWeather: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    locationsDataItem: locationsDataType
+  fetchData: (
+    locationsDataItem: locationsDataType,
+    weatherOrForecast: weatherOrForecastType,
+    units: unitsType
   ) => void;
   weather: weatherDataType;
   isWeather: boolean;
+  forecast: forecast5DataType;
+  isForecast: boolean;
   selectedLocation: locationType;
 };
 
@@ -28,10 +33,14 @@ const DataContextProvider = ({
 }: DataContextProviderPropsType): JSX.Element => {
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [locationsData, setLocationsData] = useState<locationsDataType[]>([]);
-  const [isWeather, setIsWeather] = useState<boolean>(false);
   const [weather, setWeather] = useState<weatherDataType>(
     {} as weatherDataType
   );
+  const [isWeather, setIsWeather] = useState<boolean>(false);
+  const [forecast, setForecast] = useState<forecast5DataType>(
+    {} as forecast5DataType
+  );
+  const [isForecast, setIsForecast] = useState<boolean>(false);
   const [selectedLocation, setSelectedLocation] = useState<locationType>(
     {} as locationType
   );
@@ -56,30 +65,39 @@ const DataContextProvider = ({
       .then(() => console.log("Locations API:", locationsData));
   };
 
-  const fetchWeather = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    locationsDataItem: locationsDataType
+  const fetchData = async (
+    locationsDataItem: locationsDataType,
+    weatherOrForecast: weatherOrForecastType,
+    units: unitsType
   ) => {
     console.log("Option clicked!!!");
-    const units: unitsType = "metric";
     const lat = locationsDataItem.lat;
     const lon = locationsDataItem.lon;
-    const apiUrl: string = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${process.env.REACT_APP_API_KEY}`;
+    const apiUrl: string = `https://api.openweathermap.org/data/2.5/${weatherOrForecast}?lat=${lat}&lon=${lon}&units=${units}&appid=${process.env.REACT_APP_API_KEY}`;
     fetch(apiUrl)
       .then((response) => response.json())
-      .then(setWeather)
-      .then(() => {
-        setIsWeather(true);
-        setShowOptions(false);
+      .then((data) => {
+        switch (weatherOrForecast) {
+          case "weather":
+            setWeather(data);
+            setIsWeather(true);
+            setShowOptions(false);
+            break;
+          case "forecast":
+            setForecast(data);
+            setIsForecast(true);
+            setShowOptions(false);
+            break;
+        }
       });
-
     console.log("Weather: ", weather);
-    console.log(isWeather);
+    console.log("Forecast 5: ", forecast);
     setSelectedLocation({
       name: locationsDataItem.name,
       country: locationsDataItem.country,
     });
   };
+
   return (
     <DataContext.Provider
       value={{
@@ -87,9 +105,11 @@ const DataContextProvider = ({
         showOptions,
         setShowOptions,
         fetchOptions,
-        fetchWeather,
+        fetchData,
         weather,
         isWeather,
+        forecast,
+        isForecast,
         selectedLocation,
       }}
     >
