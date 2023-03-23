@@ -36,7 +36,7 @@ const DisplayData = () => {
   //   gust
 
   return (
-    <div className="display-container">
+    <div className="main-content">
       <div>
         {city}, {country}
       </div>

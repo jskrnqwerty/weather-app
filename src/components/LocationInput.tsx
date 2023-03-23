@@ -10,7 +10,7 @@ const LocationInput = (): JSX.Element => {
       <div className="input-field">
         <input
           type="text"
-          placeholder="city name..."
+          placeholder="city..."
           autoComplete="off"
           onChange={(e) => {
             fetchOptions(e);
