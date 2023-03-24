@@ -7,17 +7,17 @@ const LocationInput = (): JSX.Element => {
 
   return (
     <>
-      <div className="input-field">
-        <input
-          type="text"
-          placeholder="city..."
-          autoComplete="off"
-          onChange={(e) => {
-            fetchOptions(e);
-          }}
-        ></input>
-      </div>
-      <div className="list-options">
+      {/* <div className="input-field"> */}
+      <input
+        type="text"
+        placeholder="city..."
+        autoComplete="off"
+        onChange={(e) => {
+          fetchOptions(e);
+        }}
+      ></input>
+      {/* </div> */}
+      <div className="list-container">
         {showOptions && <LocationOptions locationsData={locationsData} />}
       </div>
     </>

@@ -11,7 +11,9 @@ const App = () => {
   console.log("isWeather:", isWeather);
 
   return (
-    <div className="App">{isWeather ? <DisplayForecast /> : <Home />}</div>
+    <>
+      <div className="App">{isWeather ? <DisplayForecast /> : <Home />}</div>
+    </>
   );
 };
 

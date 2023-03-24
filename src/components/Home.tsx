@@ -4,6 +4,7 @@ import Title from "./Title";
 const Home = (): JSX.Element => {
   return (
     <>
+      <div className="home"></div>
       <div className="main-content">
         <div className="heading">
           <Title />
