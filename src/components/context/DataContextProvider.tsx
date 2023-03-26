@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { changeEventInType, setBoolen } from "../types/DataContextTypes";
 import {
   locationsDataType,
   weatherDataType,
@@ -6,41 +7,45 @@ import {
   unitsType,
   locationType,
   weatherOrForecastType,
-} from "../types/types";
+} from "../types/Types";
 
 export const DataContext = createContext({} as DataContextProviderValuesType);
 
 type DataContextProviderPropsType = { children: React.ReactNode };
 type DataContextProviderValuesType = {
+  showHome: boolean;
+  setShowHome: setBoolen;
   locationsData: locationsDataType[];
   showOptions: boolean;
-  setShowOptions: React.Dispatch<React.SetStateAction<boolean>>;
-  fetchOptions: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setShowOptions: setBoolen;
+  fetchOptions: (e: changeEventInType) => void;
   fetchData: (
     locationsDataItem: locationsDataType,
     weatherOrForecast: weatherOrForecastType,
     units: unitsType
   ) => void;
   weather: weatherDataType;
-  isWeather: boolean;
+  showWeather: boolean;
+  setShowWeather: setBoolen;
   forecast: forecast5DataType;
-  isForecast: boolean;
+  showForecast: boolean;
   selectedLocation: locationType;
 };
 
 const DataContextProvider = ({
   children,
 }: DataContextProviderPropsType): JSX.Element => {
+  const [showHome, setShowHome] = useState<boolean>(true);
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [locationsData, setLocationsData] = useState<locationsDataType[]>([]);
   const [weather, setWeather] = useState<weatherDataType>(
     {} as weatherDataType
   );
-  const [isWeather, setIsWeather] = useState<boolean>(false);
+  const [showWeather, setShowWeather] = useState<boolean>(false);
   const [forecast, setForecast] = useState<forecast5DataType>(
     {} as forecast5DataType
   );
-  const [isForecast, setIsForecast] = useState<boolean>(false);
+  const [showForecast, setShowForecast] = useState<boolean>(false);
   const [selectedLocation, setSelectedLocation] = useState<locationType>(
     {} as locationType
   );
@@ -80,12 +85,14 @@ const DataContextProvider = ({
         switch (weatherOrForecast) {
           case "weather":
             setWeather(data);
-            setIsWeather(true);
+            setShowWeather(true);
+            setShowForecast(false);
             setShowOptions(false);
             break;
           case "forecast":
             setForecast(data);
-            setIsForecast(true);
+            setShowForecast(true);
+            setShowWeather(false);
             setShowOptions(false);
             break;
         }
@@ -101,15 +108,18 @@ const DataContextProvider = ({
   return (
     <DataContext.Provider
       value={{
+        showHome,
+        setShowHome,
         locationsData,
         showOptions,
         setShowOptions,
         fetchOptions,
         fetchData,
         weather,
-        isWeather,
+        showWeather,
+        setShowWeather,
         forecast,
-        isForecast,
+        showForecast,
         selectedLocation,
       }}
     >

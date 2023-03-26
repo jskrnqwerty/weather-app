@@ -39,13 +39,34 @@ type coordType = {
   lon: number;
 };
 
+export type weatherTypeType =
+  | "Rain"
+  | "Clouds"
+  | "Snow"
+  | "Clear"
+  | "Mist"
+  | "Smoke"
+  | "Haze";
+export type weatherDescriptionType =
+  | "clear sky"
+  | "few clouds"
+  | "overcast clouds"
+  | "broken clouds"
+  | "scattered clouds"
+  | "light rain"
+  | "moderate rain"
+  | "mist"
+  | "snow"
+  | "smoke"
+  | "haze";
+
 export type weatherDataType = {
   coord: coordType;
   weather: [
     {
       id: number;
-      main: string;
-      description: string;
+      main: weatherTypeType;
+      description: weatherDescriptionType;
       icon: string;
     }
   ];
