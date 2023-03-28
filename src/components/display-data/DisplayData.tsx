@@ -1,11 +1,9 @@
 import "../css/style.css";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContextProvider";
-// import { MdOutlineLocationOn as LocationIcon } from "react-icons/md";
 import { WiHumidity as HumidityIcon } from "react-icons/wi";
 import {
   FaMapMarkerAlt as LocationIcon,
-  FaCloudShowersHeavy as RainIcon,
   FaWind as WindIcon,
   FaThermometerHalf as FeelsLikeIcon,
 } from "react-icons/fa";
@@ -20,16 +18,16 @@ const DisplayData = (): JSX.Element => {
 
   const city = selectedLocation.name;
   const country = selectedLocation.country;
-  const weatherCity = weather.name;
-  const weatherCountry = weather.sys.country;
   const temp = Math.floor(weather.main.temp);
   const feelsLike = Math.floor(weather.main.feels_like);
-  const tempMin = Math.floor(weather.main.temp_min);
-  const tempMax = Math.floor(weather.main.temp_max);
   const humidity = Math.floor(weather.main.humidity);
   const weatherDescription = weather?.weather[0].description;
   const weatherType = weather?.weather[0].main;
   const windSpeed = Math.floor(weather.wind.speed);
+  const weatherCity = weather.name;
+  const weatherCountry = weather.sys.country;
+  const tempMin = Math.floor(weather.main.temp_min);
+  const tempMax = Math.floor(weather.main.temp_max);
   const windGust = Math.floor(weather.wind.gust);
   const months = [
     "Jan",

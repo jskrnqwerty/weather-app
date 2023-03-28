@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { DataContext } from "./context/DataContextProvider";
-import { locationsDataType } from "./types/Types";
+import { locationsDataType } from "../types/Types";
 
 type LocationOptionsPropsType = {
   locationsData: locationsDataType[];

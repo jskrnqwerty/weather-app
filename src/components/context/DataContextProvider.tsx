@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { changeEventInType, setBoolen } from "../types/DataContextTypes";
+import { changeEventInType, setBoolen } from "../../types/DataContextTypes";
 import {
   locationsDataType,
   weatherDataType,
@@ -7,7 +7,7 @@ import {
   unitsType,
   locationType,
   weatherOrForecastType,
-} from "../types/Types";
+} from "../../types/Types";
 
 export const DataContext = createContext({} as DataContextProviderValuesType);
 

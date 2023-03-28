@@ -1,13 +1,14 @@
 import { BsPatchQuestionFill as MissingIcon } from "react-icons/bs";
-import { weatherTypeType, weatherDescriptionType } from "../types/Types";
-import SvgClearDay from "../assets/animated/ClearDay";
-import SvgPartlyCloudyDay from "../assets/animated/PartlyCloudyDay";
-import SvgOvercast from "../assets/animated/Overcast";
-import SvgMist from "../assets/animated/Mist";
-import SvgSnow from "../assets/animated/Snow";
-import SvgRain from "../assets/animated/Rain";
-import SvgSmoke from "../assets/animated/more/Smoke";
-import SvgHaze from "../assets/animated/Haze";
+import { weatherTypeType, weatherDescriptionType } from "../../types/Types";
+// import SvgClearDay from "../../assets/animated/ClearDay";
+import SvgClearDay from "../../assets/animated-icons/ClearDay";
+import SvgPartlyCloudyDay from "../../assets/animated-icons/PartlyCloudyDay";
+import SvgOvercast from "../../assets/animated-icons/Overcast";
+import SvgMist from "../../assets/animated-icons/Mist";
+import SvgSnow from "../../assets/animated-icons/Snow";
+import SvgRain from "../../assets/animated-icons/Rain";
+import SvgSmoke from "../../assets/animated-icons/more/Smoke";
+import SvgHaze from "../../assets/animated-icons/Haze";
 
 type WeatherIconPropsType = {
   size: string;
@@ -20,7 +21,7 @@ const WeatherIcon = ({
   weatherType,
   weatherDescription,
 }: WeatherIconPropsType): JSX.Element => {
-  var icon: any;
+  var icon: React.ReactNode;
 
   switch (weatherType && weatherDescription) {
     case "Clouds" && "clear sky":
