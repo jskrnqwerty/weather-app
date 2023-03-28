@@ -1,4 +1,4 @@
-// import "../css/style.css";
+import "../css/style.css";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContextProvider";
 // import { MdOutlineLocationOn as LocationIcon } from "react-icons/md";
@@ -148,7 +148,7 @@ const DisplayData = (): JSX.Element => {
         {/* <div>
             Min Temp: {tempMin} <sup>o</sup>C
           </div> */}
-        {/* <div>
+        {/* <div>            
             Max Temp: {tempMax} <sup>o</sup>C
           </div> */}
         {/* <div>Wind Gust: {windGust} kmph</div> */}
