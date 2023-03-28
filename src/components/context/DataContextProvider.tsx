@@ -64,6 +64,7 @@ const DataContextProvider = ({
   const fetchLocationsData = async (currInput: string) => {
     const numOfOptions: number = 5;
     const apiUrl: string = `http://api.openweathermap.org/geo/1.0/direct?q=${currInput}&limit=${numOfOptions}&appid=${process.env.REACT_APP_API_KEY}`;
+    console.log(apiUrl);
     fetch(apiUrl)
       .then((response) => response.json())
       .then(setLocationsData)
@@ -79,6 +80,7 @@ const DataContextProvider = ({
     const lat = locationsDataItem.lat;
     const lon = locationsDataItem.lon;
     const apiUrl: string = `https://api.openweathermap.org/data/2.5/${weatherOrForecast}?lat=${lat}&lon=${lon}&units=${units}&appid=${process.env.REACT_APP_API_KEY}`;
+    console.log(apiUrl);
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {

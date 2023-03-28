@@ -19,7 +19,8 @@ const LocationOptions = ({
             <button
               onClick={() => fetchData(locationsDataItem, "weather", "metric")}
             >
-              {locationsDataItem.name}, {locationsDataItem.state},{" "}
+              {locationsDataItem.name + ", "}
+              {locationsDataItem.state ? locationsDataItem.state + " " : ""}
               {locationsDataItem.country}
             </button>
           </li>

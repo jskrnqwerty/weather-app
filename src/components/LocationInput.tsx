@@ -12,6 +12,7 @@ const LocationInput = (): JSX.Element => {
         type="text"
         placeholder="city..."
         autoComplete="off"
+        autoFocus
         onChange={(e) => {
           fetchOptions(e);
         }}

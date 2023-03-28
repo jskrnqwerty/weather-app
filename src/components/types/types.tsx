@@ -55,6 +55,7 @@ export type weatherDescriptionType =
   | "scattered clouds"
   | "light rain"
   | "moderate rain"
+  | "heavy intensity rain"
   | "mist"
   | "snow"
   | "smoke"

@@ -67,6 +67,7 @@ const WeatherIcon = ({
       break;
     case "Rain" && "light rain":
     case "Rain" && "moderate rain":
+    case "Rain" && "heavy intensity rain":
       icon = (
         <SvgRain
           title={weatherType}
