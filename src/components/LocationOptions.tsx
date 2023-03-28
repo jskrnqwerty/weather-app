@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { DataContext } from "./context/DataContextProvider";
-import { locationsDataType } from "./types/types";
+import { locationsDataType } from "./types/Types";
 
 type LocationOptionsPropsType = {
   locationsData: locationsDataType[];
@@ -12,19 +12,21 @@ const LocationOptions = ({
   const { fetchData } = useContext(DataContext);
 
   return (
-    <ul className="ul">
-      {locationsData.map((locationsDataItem, index) => (
-        <li key={index}>
-          <button
-            className="dropdown-btn"
-            onClick={() => fetchData(locationsDataItem, "weather", "metric")}
-          >
-            {locationsDataItem.name}, {locationsDataItem.state},{" "}
-            {locationsDataItem.country}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <div className="generated-list">
+      <ul>
+        {locationsData.map((locationsDataItem, index) => (
+          <li key={index}>
+            <button
+              onClick={() => fetchData(locationsDataItem, "weather", "metric")}
+            >
+              {locationsDataItem.name + ", "}
+              {locationsDataItem.state ? locationsDataItem.state + " " : ""}
+              {locationsDataItem.country}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

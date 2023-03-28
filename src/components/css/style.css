@@ -1,58 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Roboto', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
-  background-color: #f7f3e181;
-  /* background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%); */
+  -moz-osx-font-smoothing: grayscale; */
+  background-color: #22222281;
+  background: rgb(78,98,254);
+  background: linear-gradient(114deg, rgba(78,98,254,1) 0%, rgba(63,163,207,1) 52%, rgba(2,65,155,1) 100%);
+  background-size: cover;
+  color: whitesmoke;
 }
 
 h1 {
   margin: 0;
-  padding: 1rem;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
+.heading {
+  margin-bottom: 2rem;
+}
+.home-container {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .App {
   display: flex;
   flex-direction: column;
+  margin: 1rem;
+  overflow: hidden;  
   text-align: center;
-  align-items: center;
-  align-self: center;
   margin: auto;
-  /* justify-content: center; */
+  justify-content: center;
   /* font-size: calc(10px + 2vmin); */
   /* color: white; */
   mix-blend-mode: multiply;
-  min-height: 900px;
+  min-height: 100vh;
   max-width: 500px;
   background-color: #D9AFD9;
   background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
   box-shadow: 1px 1px 500px 1px rgba(0, 0, 0, 0.192);
   }
   
-.heading {
-  margin-bottom: 2rem;
-}
-.home-container {
-  /* background-color: blue; */
-  /* height: 80%; */
-  margin-top: 25vh;
-  padding-bottom: 2rem;
-}
-
-  .App-logo {
+  /* .App-logo {
     height: 40vmin;
     pointer-events: none;
-  }
+  } */
   
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  /* @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
   }
-}
   
 @keyframes App-logo-spin {
   from {
@@ -61,49 +69,164 @@ h1 {
   to {
     transform: rotate(360deg);
   }
-} */
-
-.input-container {
-  position: relative;
 }
 
-.input-container input {
+.input-container {
+  position: relative;  
+} */
+
+input {
   padding: 0.35rem;
   padding-left: 0.8rem;
   background-color: transparent;
-  outline: none;
+  border: 1px solid whitesmoke;
+  /* border-style: ridge; */
+  outline-color: whitesmoke;
+  outline: thin;
   font-size: 1.2rem;
-  max-width: 100%;
+  color: whitesmoke; 
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.02rem;
+}
+input::placeholder {
+  color: rgb(212, 212, 212);
+}
+input:hover {
+  background-color: #06193318;
+}
+input:focus {
+  background-color: #06193318;
 }
 
-.list-options {
-  position: absolute;
-  width: 100%;
-}
-
-.list-options .ul {
+ul {
   margin: 0;
+  padding: 0;
   list-style: none;
-  padding:0
-  
 }
 
-.dropdown-btn {
+button {
   text-align: left;
   font-size: 1rem;
   padding: 0.2rem 0.8rem;
   min-width: 100%;
   /* border: unset; */
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.02rem;
 }
 
-.dropdown-btn:hover {
-  background-color: grey;
-  color: white
+button:hover {
+  background-color: #081d3c;
+  color: whitesmoke
+}
+
+.input-container {
+}
+
+.list-container {
+  position: absolute;
+  width: 100%;
 }
 
 .display-container {
-  background-color: white;
+  background-color: whitesmoke;
   min-height: 100%;
   max-width: 100%;
+}
 
+.header {
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.current-location {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  max-width: 75%;
+}
+.location-icon {
+  display: inline-block;
+  padding-top: 0.25rem;
+}
+.city {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0.5rem;
+  overflow: ;
+}
+.country {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.local-time {
+  
+}
+
+.current-weather-icon {
+  position: absolute;
+  top: 5rem;
+}
+
+.weather-summary {
+  position: absolute;
+  bottom: 9rem;
+  min-width: 75%;
+  max-width: 90%;
+}
+.temp {
+  position: relative;
+  font-size: 6rem;
+  font-weight: 900;
+  /* margin-bottom: -1.2rem; */
+}
+
+.weather-summary .degree{
+  position: absolute;
+  /* right: 40px; */
+  /* top: 5px; */
+  font-size: 5rem;
+  color: rgba(245, 245, 245, 0.466);
+}
+
+.weather-description {
+  font-size: 1.4rem;
+}
+.weather-type{
+
+}
+
+.feels-like {
+ 
+}
+
+.additional-info {
+  position: absolute;
+  bottom: 2.5rem;
+  display: grid;
+  min-width: 100%;
+  margin-top: 4rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.small-text {
+  font-size: 0.8rem;
+}
+
+.light-text {
+  color: rgba(245, 245, 245, 0.562);
+}
+
+.back-arrow {
+  position: absolute;
+  left: 1.5rem;
+  top: 1.75rem;
+  padding: 0.6rem 0.7rem 0.4rem 0.6rem;
+  border-radius: 1000px;;
+}
+.back-arrow:hover {
+  background: #06193318;
 }
