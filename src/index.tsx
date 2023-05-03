@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import "./components/css/style.css";
+import "./css/style.css";
 import App from "./App";
 import ForecastCOntextProvider from "./components/context/DataContextProvider";
 

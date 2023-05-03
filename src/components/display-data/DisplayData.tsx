@@ -1,4 +1,4 @@
-import "../css/style.css";
+import "../../css/style.css";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContextProvider";
 import { WiHumidity as HumidityIcon } from "react-icons/wi";
@@ -103,6 +103,10 @@ const DisplayData = (): JSX.Element => {
             weatherType={weatherType}
             weatherDescription={weatherDescription}
           />
+          {/* <IconFacebook
+            size="56"
+            color="white"
+          /> */}
         </div>
         {/* <div>{weatherCity}</div> */}
         {/* <div>{weatherCountry}</div> */}

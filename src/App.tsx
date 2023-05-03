@@ -1,4 +1,4 @@
-import "./components/css/style.css";
+import "./css/style.css";
 import { useContext } from "react";
 import { DataContext } from "./components/context/DataContextProvider";
 import DisplayForecast from "./components/display-data/DisplayData";
