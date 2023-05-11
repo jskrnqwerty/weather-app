@@ -16,6 +16,8 @@ export type locationType = {
   local_names?: localNamesType;
   country: string;
   state?: string;
+  deleteThisLater?: string;
+  deleteThisLater2?: string;
 };
 
 export type forecast5DataType = {
